@@ -9,8 +9,6 @@ using namespace std;
 
 const char c[] = "+-*/";
 
-equation::equation()
-{}
 
 void equation::initequation()
 {
@@ -19,80 +17,65 @@ void equation::initequation()
 
 	for (int i = 0;i < msg.digit_num;i++)
 	{
-		m[i] = rand() % 8 + 1;
-		n[i] = c[rand() % 4];
+		s1[i] = rand() % 8 + 1; //Êý×Ö
+		s2[i] = c[rand() % 4];  //·ûºÅ
 	}
-	n[msg.digit_num - 1] = '=';
+	s2[msg.digit_num - 1] = '=';
 	bracket();
 }
 
 void equation::bracket() {
-	CalculateResult cal;
+	CalculateResult cal();
 	Message msg;
 
-	msg.bracket_num = rand() % 2;
-
-
-	if (msg.bracket_num == 1)
+	bracket_num = rand() % 2;
+	if (bracket_num == 1)
 	{
-		msg.bracket_a = rand() % ((msg.digit_num - 1) / 2) + 1;
-		msg.bracket_b = msg.bracket_a + rand() % ((msg.digit_num - 1) / 2) + 2;
+		bracket_a = rand() % ((msg.digit_num - 1) / 2) + 1;
+		bracket_b = bracket_a + rand() % ((msg.digit_num - 1) / 2) + 2;
+	}
 
-		for (int i = 0; i < msg.digit_num; i++)
-		{
-			msg.s1[i] = m[i];  //Êý×Ö 
-			msg.s2[i] = n[i];  //·ûºÅ 
-		}	
-	}
-	else if (msg.bracket_num == 0)
-	{
-		for (int i = 0; i < msg.digit_num; i++)
-		{
-			msg.s1[i] = m[i];  //Êý×Ö 
-			msg.s2[i] = n[i];  //·ûºÅ 
-		}
-	}
-	checkint();
+
 	
+	checkprintf();
 }
 
-void  equation::checkint() {  //
+void  equation::checkprintf() { 
 	Message msg;
 	if (msg.result != (int)msg.result)
 	{
 		initequation();
 	}
-	else 
-        GenerateEquation();
-}
+	else
+	{
+		if (bracket_num == 0)
+		{
+			for (int i = 0;i < msg.digit_num;i++)
+			{
+				if (s2[i] == '/')
+					cout << s1[i] << "¡Â";
+				else
+					cout << s1[i] << s2[i];
+			}
+			//cout<<result;
+		}
+		else if (bracket_num == 1)
+		{
+			for (int i = 0;i < msg.digit_num; i++)
+			{
+				if (i == bracket_a) cout << "(";
+				cout << s1[i];
+				if (i == bracket_b - 1) cout << ")";
+				if (s2[i] == '/')
+					cout << "¡Â";
+				else
+					cout << s2[i];
+			}
+			//		cout<<msg.result; 
+		}
+	}
 
-void equation::GenerateEquation() {
-	Message msg;
-	if (msg.bracket_num == 0)
-	{
-		for (int i = 0;i < msg.digit_num;i++)
-		{
-			if (msg.s2[i] == '/')
-				cout << msg.s1[i] << "¡Â";
-			else
-				cout << msg.s1[i] << msg.s2[i];
-		}
-		//cout<<msg.result;
-	}
-	else if (msg.bracket_num == 1)
-	{
-		for (int i = 0;i < msg.digit_num; i++) //²âÊÔËãÊ½
-		{
-			if (i == msg.bracket_a) cout << "(";
-			cout << msg.s1[i];
-			if (i == msg.bracket_b - 1) cout << ")";
-			if (msg.s2[i] == '/')
-				cout << "¡Â";
-			else
-				cout << msg.s2[i];
-		}
-		//		cout<<msg.result; 
-	}
+	
 }
 
 

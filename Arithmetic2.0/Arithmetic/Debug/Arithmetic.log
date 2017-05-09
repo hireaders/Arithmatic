@@ -1,2 +1,9 @@
-﻿  Arithmetic.vcxproj -> E:\C++\Arithmetic\Arithmetic\Debug\Arithmetic.exe
-  Arithmetic.vcxproj -> E:\C++\Arithmetic\Arithmetic\Debug\Arithmetic.pdb (Full PDB)
+﻿  Message.cpp
+  Arithmetic.cpp
+  正在生成代码...
+Arithmetic.obj : error LNK2019: 无法解析的外部符号 "class CalculateResult __cdecl cal(void)" (?cal@@YA?AVCalculateResult@@XZ)，该符号在函数 _main 中被引用
+equation.obj : error LNK2001: 无法解析的外部符号 "public: static double Message::result" (?result@Message@@2NA)
+Fraction.obj : error LNK2001: 无法解析的外部符号 "public: static double Message::result" (?result@Message@@2NA)
+Message.obj : error LNK2001: 无法解析的外部符号 "public: static double Message::result" (?result@Message@@2NA)
+CalculateResult.obj : error LNK2001: 无法解析的外部符号 "public: static double Message::result" (?result@Message@@2NA)
+E:\github\lsy\Arithmatic\Arithmetic2.0\Debug\Arithmetic.exe : fatal error LNK1120: 2 个无法解析的外部命令

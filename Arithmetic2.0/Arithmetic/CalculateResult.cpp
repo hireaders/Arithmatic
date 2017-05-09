@@ -4,58 +4,56 @@
 #include "Message.h"
 #include "Interface.h"
 #include <iostream>
+#include <string>
 #include <stdlib.h>
 using namespace std;
-
-CalculateResult::CalculateResult()
-{}
 
 void CalculateResult::check()  //运算答案 
 {
 	Message msg;
-	sign = msg.s1[0]; //载入第一个符号
+	sign = s1[0]; //载入第一个符号
 	msg.result = low(); //进行计算
 }
 
 void CalculateResult::match(char nowsign) //匹配符号 
 {
-	Message msg;
-	if (msg.bracket_num == 0)
+
+	if (bracket_num == 0)
 	{
 		if (sign == nowsign) //匹配成功，获取下一个标志
 		{
 			k++;
 			if ((k % 2) == 0) //下一位是数字 
-				sign = msg.s1[k / 2];
+				sign = s1[k / 2];
 			else    //下一位是符号 
-				sign = msg.s2[(k - 1) / 2];
+				sign = s2[(k - 1) / 2];
 		}
 	}
-	else if (msg.bracket_num == 1)
+	else if (bracket_num == 1)
 	{
 		if (sign == nowsign) //匹配成功，获取下一个标志
 		{
 			k++;
-			if ((k == 2 * msg.bracket_a) && (flag == 0))
+			if ((k == 2 * bracket_a) && (flag == 0))
 			{
 				sign = '(';
 				flag = 1;
 				k--;
 			}
-			else if ((k == msg.bracket_b * 2 - 1) && (temp == 0))
+			else if ((k == bracket_b * 2 - 1) && (temp == 0))
 			{
 				sign = ')';
 				temp = 1;
 				k--;
 			}
-			else if ((k == 2 * msg.bracket_a) && (flag == 1))
-				sign = msg.s1[k / 2];
-			else if ((k == msg.bracket_b * 2 - 1) && (temp == 1))
-				sign = msg.s2[(k - 1) / 2];
-			else if (((k % 2) == 0) && (k != 2 * msg.bracket_a)) //下一位是数字 
-				sign = msg.s1[k / 2];
-			else if (((k % 2) != 0) && (k != msg.bracket_b * 2 - 1))    //下一位是符号 
-				sign = msg.s2[(k - 1) / 2];
+			else if ((k == 2 * bracket_a) && (flag == 1))
+				sign = s1[k / 2];
+			else if ((k == bracket_b * 2 - 1) && (temp == 1))
+				sign = s2[(k - 1) / 2];
+			else if (((k % 2) == 0) && (k != 2 * bracket_a)) //下一位是数字 
+				sign = s1[k / 2];
+			else if (((k % 2) != 0) && (k != bracket_b * 2 - 1))    //下一位是符号 
+				sign = s2[(k - 1) / 2];
 		}
 	}
 
@@ -108,7 +106,6 @@ double CalculateResult::mid() //乘除运算
 
 double CalculateResult::high() //括号运算及数字 
 {
-	Message msg;
 	double result3 = 0;
 	if (sign == '(') //带有括号的运算
 	{
@@ -120,48 +117,43 @@ double CalculateResult::high() //括号运算及数字
 	{
 		result3 = sign;
 		k++;
-		if (msg.bracket_num == 0)
+		if (bracket_num == 0)
 		{
-			sign = msg.s2[(k - 1) / 2];//下一位是符号 
+			sign = s2[(k - 1) / 2];//下一位是符号 
 		}
-		else if (msg.bracket_num == 1)
+		else if (bracket_num == 1)
 		{
-			if ((k == msg.bracket_b * 2 - 1) && (temp == 0))
+			if ((k == bracket_b * 2 - 1) && (temp == 0))
 			{
 				sign = ')';
 				temp = 1;
 				k--;
 			}
-			else if (((k % 2) != 0) && (k != msg.bracket_b * 2 - 1))    //下一位是符号 
-				sign = msg.s2[(k - 1) / 2];
+			else if (((k % 2) != 0) && (k != bracket_b * 2 - 1))    //下一位是符号 
+				sign =s2[(k - 1) / 2];
 		}
 
 	}
 	return result3;
 }
 
-
-void CalculateResult::checkanswer(int result)
+int CalculateResult::checkanswer(int result, string *l)
 {
-	Message msg;
-	Interface inter;
-
-	cin >> answer;
 	char ch = getchar();
 
-	if (answer == result)
+	if (ch == 'e')//结束
 	{
-		cout << msg.s[1];
-		msg.correct += 1;
+		return 3;
 	}
-	else if ((answer != result) && (ch != 'e'))
+	if (answer == result)//答案正确
 	{
-		cout << msg.s[2] << result;
-		msg.wrong += 1;
+		cout << *(l + 1);
+		return 1;
 	}
-	if (ch == 'e')
+	if (answer != result)//答案错误
 	{
-		inter.finally();
+		cout << *(l + 2) << result << endl;
+		return 2;
 	}
 }
 

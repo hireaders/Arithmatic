@@ -3,30 +3,20 @@
 #include "Message.h"
 #include "Language.h"
 #include<iostream>
+#include<string>
 using namespace std;
-
-Interface::Interface()
-{
-}
 
 void Interface::first()
 {
-	Message msg;
-	Language lang;
+	Language langu;
 	cout << "***********************************************" << endl;
 	cout << "Please choose the language:" << endl;
-
-	lang.languagelist();
-	lang.initlanguage();
-	cout << msg.s[0];
-	cin >> msg.equation_num;
-	cout << "***********************************************" << endl;
+	langu.languagelist();
 }
-void Interface::finally()
+void Interface::finally(string *l,int c,int w)
 {
-	Message msg;
 	cout << endl;
 	cout << "***********************************************" << endl;
-	cout << msg.s[3] << msg.correct << msg.s[5] << msg.s[4] << msg.wrong << msg.s[5] << endl;
+	cout << *(l+3) << c << *(l+5) << *(l+4) << w << *(l+5) << endl;
 	cout << "***********************************************" << endl;
 }

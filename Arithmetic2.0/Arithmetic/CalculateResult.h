@@ -1,21 +1,27 @@
-#pragma once
-	class CalculateResult   //算式运算
+#include <string>
+using namespace std;
+
+class CalculateResult   //算式运算
 {
 public:
-	CalculateResult();
 	void check();
 	void match(char nowsign);
-	void checkanswer(int result); //检验答案
+	int checkanswer(int result, string *l); //检验答案
 	double mid();
 	double high();
 	double low();
 private:
 	int answer,
 		k = 0,      //目前位于算式位置
-		temp = 0,   
-		flag = 0;   //见下方解释
+		temp = 0,
+		flag = 0,   //见下方解释
+		bracket_num,
+		bracket_a,
+		bracket_b,
+		s1[20];
 	char sign,
-		nowsign;
+		nowsign,
+		s2[20];
 };
 /*
 比如1*（2+3）
