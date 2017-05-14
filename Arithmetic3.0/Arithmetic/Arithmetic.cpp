@@ -24,7 +24,7 @@ int main()
 		Fraction fra;
 		equation equ;
 		int judge = rand() % 5;       //出现分数运算的几率，目前1/5
-		if (judge != -1)
+		if (judge != 0)
 		{
 			equ.initequation();       //初始化整数算式
 			result=equ.result();      //计算并返回答案
