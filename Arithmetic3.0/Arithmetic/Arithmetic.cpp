@@ -21,16 +21,16 @@ int main()
 	srand((unsigned(time(NULL))));
 	for (int j = 0;j < n;j++)
 	{
-		Fraction fra;
-		equation equ;
 		int judge = rand() % 5;       //出现分数运算的几率，目前1/5
 		if (judge != 0)
 		{
+			equation equ;
 			equ.initequation();       //初始化整数算式
 			result=equ.result();      //计算并返回答案
 		}
 		else
 		{
+			Fraction fra;
 			fra.initFraction();       //初始化分数算式
 			result=fra.result();      //计算并返回答案
 		}

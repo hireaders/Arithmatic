@@ -21,6 +21,5 @@ private:
 	char name[10],
 		 str[100],//ÄÚÈİ 
 	     strp[100];
-
 };
 
