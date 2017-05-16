@@ -1,3 +1,8 @@
-﻿  Arithmetic.cpp
-  Arithmetic.vcxproj -> E:\C++\Arithmetic3.0\Debug\Arithmetic.exe
-  Arithmetic.vcxproj -> E:\C++\Arithmetic3.0\Debug\Arithmetic.pdb (Full PDB)
+﻿  stdafx.cpp
+  Interface.cpp
+  Fraction.cpp
+  equation.cpp
+  Arithmetic.cpp
+  正在生成代码...
+  Arithmetic.vcxproj -> E:\github\lsy\Arithmatic\Arithmetic3.0\Debug\Arithmetic.exe
+  Arithmetic.vcxproj -> E:\github\lsy\Arithmatic\Arithmetic3.0\Debug\Arithmetic.pdb (Full PDB)
