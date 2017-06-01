@@ -1,0 +1,4 @@
+﻿  equation.cpp
+e:\c++\arithmetic\arithmetic3.0\arithmetic\equation.cpp(70): warning C4101: “e”: 未引用的局部变量
+  Arithmetic.vcxproj -> E:\C++\Arithmetic\Arithmetic3.0\Debug\Arithmetic.exe
+  Arithmetic.vcxproj -> E:\C++\Arithmetic\Arithmetic3.0\Debug\Arithmetic.pdb (Full PDB)
