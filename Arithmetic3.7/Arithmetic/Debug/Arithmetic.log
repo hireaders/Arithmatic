@@ -1,0 +1,10 @@
+﻿  stdafx.cpp
+  Random.cpp
+  Interface.cpp
+  Fraction.cpp
+  equation.cpp
+e:\c++\arithmetic3.7\arithmetic\equation.cpp(53): warning C4101: “e”: 未引用的局部变量
+  Arithmetic.cpp
+  正在生成代码...
+  Arithmetic.vcxproj -> E:\C++\Arithmetic3.7\Debug\Arithmetic.exe
+  Arithmetic.vcxproj -> E:\C++\Arithmetic3.7\Debug\Arithmetic.pdb (Full PDB)
